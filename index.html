@@ -1,311 +1,703 @@
- <meta name="description" content="Shanshan Luo&#39;s home page">
-<link rel="stylesheet" href="jemdoc.css" type="text/css">
-<link rel="shortcut icon" href="BTBU_logo.png">
-<title>Shanshan Luo's Homepage</title>
-
-  <head>
-    <title>My Webpage</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shanshan Luo's Homepage - Associate Professor at Beijing Technology and Business University">
+    <link rel="shortcut icon" href="BTBU_logo.png">
+    <title>Shanshan Luo's Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-      .pdf-container {
-        position: relative;
-        height: 0;https://github.com/shan3luo1995/shan3luo1995.github.io/blob/main/index.html
-        overflow: hidden;
-        padding-bottom: 56.25%; /* 比例为16:9的填充百分比 */
-      }
-      .pdf-container object {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: none;
-      }
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --accent: #c53030;
+            --bg: #fafafa;
+            --bg-section: #ffffff;
+            --text: #2d3748;
+            --text-light: #718096;
+            --border: #e2e8f0;
+            --nav-height: 64px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--nav-height);
+            background: var(--primary);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+
+        .nav-links a.active {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Main content */
+        main {
+            padding-top: var(--nav-height);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: #fff;
+            padding: 60px 24px 80px;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .hero-text h1 img {
+            height: 32px;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+        }
+
+        .hero-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .hero-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .hero-links a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .hero-info {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+        }
+
+        .hero-info strong {
+            color: #fff;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+        }
+
+        .hero-photo img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 4px solid rgba(255,255,255,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Section styling */
+        section {
+            padding: 60px 24px;
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-section);
+        }
+
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .section-header h2 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .section-badge {
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-left: 12px;
+            font-weight: 600;
+        }
+
+        /* Biography */
+        .biography-content {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text);
+        }
+
+        /* Research Interests */
+        .research-intro {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 24px;
+        }
+
+        .research-topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .research-topic {
+            background: var(--bg);
+            padding: 20px 24px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .research-topic h4 {
+            color: var(--primary);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .research-topic p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Publications */
+        .pub-list {
+            list-style: none;
+            counter-reset: pub-counter;
+        }
+
+        .pub-list li {
+            counter-increment: pub-counter;
+            padding: 20px 0;
+            padding-left: 48px;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pub-list li:last-child {
+            border-bottom: none;
+        }
+
+        .pub-list li::before {
+            content: counter(pub-counter);
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pub-list li p {
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .pub-list li a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .pub-list li a:hover {
+            text-decoration: underline;
+        }
+
+        .pub-list li i {
+            color: var(--text-light);
+        }
+
+        .pub-highlight {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* Updates */
+        .updates-list {
+            list-style: none;
+        }
+
+        .updates-list li {
+            padding: 16px 0;
+            padding-left: 90px;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .updates-list li:last-child {
+            border-bottom: none;
+        }
+
+        .update-date {
+            position: absolute;
+            left: 0;
+            top: 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Teaching */
+        .teaching-list {
+            list-style: none;
+        }
+
+        .teaching-list li {
+            padding: 16px 24px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .teaching-course {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .teaching-time {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.8);
+            padding: 32px 24px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: var(--nav-height);
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 16px;
+                gap: 4px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-links {
+                justify-content: center;
+            }
+
+            .hero-photo img {
+                width: 160px;
+                height: 160px;
+            }
+
+            .pub-list li {
+                padding-left: 0;
+                padding-top: 48px;
+            }
+
+            .pub-list li::before {
+                top: 0;
+            }
+
+            .updates-list li {
+                padding-left: 0;
+                padding-top: 36px;
+            }
+
+            .update-date {
+                top: 0;
+            }
+        }
     </style>
-  </head>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-brand">Shanshan Luo</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <div class="nav-links" id="navLinks">
+                <a href="#biography">Biography</a>
+                <a href="#research">Research</a>
+                <a href="#publications">Publications</a>
+                <a href="#preprints">Preprints</a>
+                <a href="#updates">Updates</a>
+                <a href="#teaching">Teaching</a>
+            </div>
+        </div>
+    </nav>
 
-<body> 
-<div id="layout-content" style="margin-top:25px">
-
-	 <!-- <a href="/cn">中文版本</a>-->
-		
-<table>
-    <tbody>
-        <tr>
-            <td width="670">
-                <div id="toptitle">
-                    <h1>Shanshan Luo &nbsp; <img src="shanshanluo.png" height="38px" style="margin-bottom:-10px" alt=''></h1>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Shanshan Luo <img src="shanshanluo.png" alt="Chinese name"></h1>
+                    <p class="hero-subtitle">Associate Professor in Statistics</p>
+                    <div class="hero-links">
+                        <a href="https://stxy.btbu.edu.cn/szdw/yytjxsz/fjsyytjx/f2b6f2f3aa534c90975f2fcff01622c7.htm" target="_blank">Department of Applied Statistics</a>
+                        <span style="color: rgba(255,255,255,0.5);">•</span>
+                        <a href="https://btbu-causality.group/" target="_blank">Causal Inference Group</a>
+                    </div>
+                    <div class="hero-info">
+                        <p>School of Mathematics and Statistics<br>
+                        Beijing Technology and Business University<br>
+                        Beijing, China. 102488.</p>
+                        <p style="margin-top: 12px;">
+                            <strong>Office:</strong> Room 209, Shutong Building, Higher Education Garden, Liangxiang<br>
+                            <strong>Email:</strong> shanshanluo@btbu.edu.cn
+                        </p>
+                    </div>
                 </div>
-                <p>
-                  <!--   <FONT size=5 face="Times New Roman">Associate Professor</FONT><br>-->
-               <br>
-                    <a href="https://stxy.btbu.edu.cn/szdw/yytjxsz/fjsyytjx/f2b6f2f3aa534c90975f2fcff01622c7.htm" target="_blank">
-  Department of Applied Statistics
-</a> & 
-<a href="https://btbu-causality.group/" target="_blank">
-  Causal Inference Group
-</a><br>
+                <div class="hero-photo">
+                    <img src="photos/luoshanshan_20251024_2.jpg" alt="Shanshan Luo">
+                </div>
+            </div>
+        </section>
 
-                     School of Mathematics and Statistics <br>
-                    Beijing Technology and Business University <br>
-                    Beijing, China. 102488.<br>
-                    <br>
-                    Office: Room 209, Shutong Building, Higher Education Garden, Liangxiang
-                    <br>
-                    Email: shanshanluo@btbu.edu.cn
-                </p>
-            </td>
-            <td>
-           <img src="photos/luoshanshan_20251024_2.jpg" border="0" width="180"> 
-<!--                 <img src="photos/shanshanluo_xinjiang.jpg" border="0" width="180">  -->
-            </td>
-        </tr>
-    </tbody>
-</table>
+        <!-- Biography -->
+        <section id="biography">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Biography</h2>
+                </div>
+                <div class="biography-content">
+                    <p>I was recently promoted to Associate Professor in the Department of Applied Statistics at the School of Mathematics and Statistics, Beijing Technology and Business University (January 2026 - present), where I previously served as a Lecturer (September 2022 - December 2025).</p>
+                    <p style="margin-top: 16px;">I obtained my Ph.D. in the School of Mathematical Sciences at Peking University (September 2017 - July 2022) under the supervision of Prof. Yangbo He, and my B.S. in the School of Mathematical Sciences at Capital Normal University (September 2013 - July 2017).</p>
+                </div>
+            </div>
+        </section>
 
-<h2>Biography</h2>
+        <!-- Research Interests -->
+        <section id="research">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Research Interests</h2>
+                </div>
+                <p class="research-intro">My primary research focuses on causal inference, particularly causal mechanisms and the interpretability of causal relationships. Over the past two years, I have concentrated on attribution problems, especially retrospective causal analysis and questions of responsibility fairness. I am interested in exploring the statistical assumptions necessary to establish the identifiability of key causal parameters, as well as methods for partial identification. Additionally, I am also interested in developing more flexible and robust estimation methods.</p>
+                
+                <div class="research-topics">
+                    <div class="research-topic">
+                        <h4>Causal Effect</h4>
+                        <p>covariate adjustment, data fusion, instrumental variable, measurement error, principal stratification, propensity score, spillover effect</p>
+                    </div>
+                    <div class="research-topic">
+                        <h4>Causal Attribution</h4>
+                        <p>individual attribution analysis, continuous outcome attribution</p>
+                    </div>
+                    <div class="research-topic">
+                        <h4>Causal Discovery</h4>
+                        <p>Bayesian network, causal mechanism of latent confounders, proximal variable selection</p>
+                    </div>
+                    <div class="research-topic">
+                        <h4>Missing Data</h4>
+                        <p>nonignorable missing data</p>
+                    </div>
+                    <div class="research-topic">
+                        <h4>Applications</h4>
+                        <p>environmental protection, oil price forecasting, and cancer causation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<p>
+        <!-- Publications -->
+        <section id="publications">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Publications</h2>
+                </div>
+                <ol class="pub-list">
+                    <li><p><b>Shanshan Luo</b>, Mengchen Shi, Wei Li, Xueli Wang, and Zhi Geng. <a href="https://doi.org/10.1214/25-EJS2424" target="_blank">Efficiency-improved doubly robust estimation with non-confounding predictive covariates</a>. <i>Electronic Journal of Statistics</i>, 2025; 19(2): 3723-3742.</p></li>
+                    
+                    <li><p><b>Shanshan Luo</b> and Zhi Geng. <a href="https://www3.stat.sinica.edu.tw/ss_newpaper/SS-2025-0152_na.pdf" target="_blank">Discussion on ''Causal and Counterfactual Views of Missing Data Models''</a>. To appear in <i>Statistica Sinica</i>, 2025.</p></li>
+                    
+                    <li><p>Wei Li, Yuan Liu, <b>Shanshan Luo</b>, and Zhi Geng. <a href="https://doi.org/10.1002/sim.70126" target="_blank">Causal inference with outcomes truncated by death and missing not at random</a>. To appear in <i>Statistics in Medicine</i>, 2025.</p></li>
+                    
+                    <li><p><b>Shanshan Luo</b>, Yixuan Yu, Chunchen Liu, Feng Xie, and Zhi Geng. <a href="https://openreview.net/forum?id=Lie2rOCgkh" target="_blank">Causal attribution analysis for continuous outcomes</a>. <i>ICML</i>, Vancouver, Canada, 2025. <span class="pub-highlight">spotlight, top 2.6%</span></p></li>
+                    
+                    <li><p><b>Shanshan Luo</b>, Yechi Zhang, Wei Li, and Zhi Geng. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167947325000519" target="_blank">Multiply robust estimation of causal effects using linked data</a>. To appear in <i>Computational Statistics & Data Analysis</i>, 2025.</p></li>
+                    
+                    <li><p>Peng Wu, <b>Shanshan Luo</b>, and Zhi Geng. <a href="https://doi.org/10.1080/01621459.2024.2435656" target="_blank">On the comparative analysis of average treatment effects estimation via data combination</a>. To appear in <i>Journal of the American Statistical Association</i>, 2024.</p></li>
+                    
+                    <li><p><b>Shanshan Luo</b>, Jiaqi Min, Wei Li, Xueli Wang, and Zhi Geng. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167947324001634" target="_blank">A comparative analysis of different adjustment sets using propensity score based estimators</a>. <i>Computational Statistics & Data Analysis</i>, 2025; 203: 108079.</p></li>
+                    
+                    <li><p>Shaojie Wei, Chao Zhang, Zhi Geng, and <b>Shanshan Luo</b>. <a href="https://doi.org/10.3390/math12182801" target="_blank">Identifiability and estimation for potential-outcome means with misclassified outcomes</a>. <i>Mathematics</i>, 2024; 12(18):2801.</p></li>
+                    
+                    <li><p><b>Shanshan Luo</b>, Wei Li, Wang Miao, and Yangbo He. <a href="http://doi.org/10.1002/sim.10175" target="_blank">Identification and estimation of causal effects in the presence of confounded principal strata</a>. <i>Statistics in Medicine</i>, 2024; 43(22): 4372-4387.</p></li>
+                    
+                    <li><p>Kang Shuai, <b>Shanshan Luo</b>, Wei Li, and Yangbo He. <a href="http://www3.stat.sinica.edu.tw/ss_newpaper/SS-2024-0006_na.pdf" target="_blank">Identifying causal effects using instrumental variables from the auxiliary population</a>. To appear in <i>Statistica Sinica</i>, 2024.</p></li>
+                    
+                    <li><p>Kang Shuai, <b>Shanshan Luo</b>, Yue Zhang, Feng Xie, and Yangbo He. <a href="http://www3.stat.sinica.edu.tw/ss_newpaper/SS-2023-0315_na.pdf" target="_blank">Identification and estimation of causal effects using non-Gaussianity and auxiliary covariates</a>. To appear in <i>Statistica Sinica</i>, 2024.</p></li>
+                    
+                    <li><p>Feng Xie, Zhengming Chen, <b>Shanshan Luo</b>, Wang Miao, Ruichu Cai, and Zhi Geng. <a href="https://dl.acm.org/doi/10.5555/3692070.3694308" target="_blank">Automating the selection of proxy variables of unmeasured confounders</a>. <i>ICML</i>, Vienna, Austria, 2024. <span class="pub-highlight">spotlight, top 3.5%</span></p></li>
+                    
+                    <li><p>Honglei Zhang, Shuyi Wang, Haoxuan Li, Chunyuan Zheng, Xu Chen, Li Liu, <b>Shanshan Luo</b>, and Peng Wu. <a href="https://ieeexplore.ieee.org/abstract/document/10597923/authors#authors" target="_blank">Uncovering the limitations of eliminating selection bias for recommendation: missing mechanisms, disentanglement, and identifiability</a>. <i>ICDE</i>, Utrecht, Netherlands, 2024.</p></li>
+                    
+                    <li><p>Wei Li, <b>Shanshan Luo</b>, and Wangli Xu. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167947323001822" target="_blank">Calibrated regression estimation using empirical likelihood under data fusion</a>. <i>Computational Statistics & Data Analysis</i>, 2024; 190: 107871.</p></li>
+                    
+                    <li><p>Wei Li, <b>Shanshan Luo</b>, Yangbo He, and Zhi Geng. <a href="https://doi.org/10.1002/sim.9883" target="_blank">Subgroup analysis using Bernoulli-gated hierarchical mixtures of experts models</a>. <i>Statistics in Medicine</i>, 2023; 42(26): 4681–4695.</p></li>
+                    
+                    <li><p><b>Shanshan Luo</b>, Wei Li, and Yangbo He. <a href="https://doi.org/10.1111/biom.13554" target="_blank">Causal inference with outcomes truncated by death in multiarm studies</a>. <i>Biometrics</i>, 2023; 79(1): 502-513.</p></li>
+                </ol>
+            </div>
+        </section>
 
-I was recently promoted to Associate Professor in the Department of Applied Statistics at the School of Mathematics and Statistics, Beijing Technology and Business University (January 2026 - present), where I previously served as a Lecturer (September 2022 - December 2025). 
+        <!-- Preprints -->
+        <section id="preprints">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Preprints</h2>
+                </div>
+                <ol class="pub-list">
+                    <li><p><b>Shanshan Luo</b>, Wei Li, Xueli Wang, Shaojie Wei, and Zhi Geng. <a href="http://arxiv.org/abs/2601.12478" target="_blank">Assessing interactive causes of an occurred outcome due to two binary exposures</a>. <i>arXiv</i>, 2026.</p></li>
+                    
+                    <li><p><b>Shanshan Luo</b>, Kang Shuai, Yechi Zhang, Wei Li, and Yangbo He. <a href="http://arxiv.org/abs/2504.05658" target="_blank">Identification and estimation of causal peer effects using instrumental variables</a>. <i>arXiv</i>, 2025. <span class="pub-highlight">poster award, ICSA 2025</span></p></li>
+                    
+                    <li><p>Yue Zhang, <b>Shanshan Luo</b>, Zhi Geng, and Yangbo He. <a href="https://arxiv.org/abs/2510.12321" target="_blank">Optimal treatment rules under missing predictive covariates: a covariate-balancing doubly robust approach</a>. <i>arXiv</i>, 2025.</p></li>
+                    
+                    <li><p>Naiwen Ying, <b>Shanshan Luo</b>, and Wang Miao. <a href="https://arxiv.org/abs/2504.14173" target="_blank">A generalized tetrad constraint for testing conditional independence given a latent variable</a>. <i>arXiv</i>, 2025.</p></li>
+                    
+                    <li><p>Peng Wu, Qing Jiang, and <b>Shanshan Luo</b>. <a href="https://arxiv.org/abs/2505.05308" target="_blank">Safe individualized treatment rules with controllable harm rates</a>. <i>arXiv</i>, 2025.</p></li>
+                    
+                    <li><p><b>Shanshan Luo</b>, Peng Wu, and Zhi Geng. <a href="http://arxiv.org/abs/2511.20318" target="_blank">Policy learning with pseudo-type classification</a>. <i>arXiv</i>, 2025.</p></li>
+                    
+                    <li><p>Jiaqi Min, Xueyue Zhang, and <b>Shanshan Luo</b>. <a href="https://arxiv.org/abs/2507.13965" target="_blank">A regression-based approach for bidirectional causal inference in the presence of unmeasured confounding</a>. <i>arXiv</i>, 2025.</p></li>
+                    
+                    <li><p><b>Shanshan Luo</b>, Yingying Wang, and Yue Zhang. Improved inverse probability weighting estimation and its application to predictive covariates, 2025. Submitted.</p></li>
+                    
+                    <li><p>Yafang Deng, Kang Shuai, and <b>Shanshan Luo</b>. Binary bidirectional causal model with instrumental variables, 2025. Submitted.</p></li>
+                </ol>
+            </div>
+        </section>
 
-I obtained my Ph.D. in the School of Mathematical Sciences at Peking University (September 2017 - July 2022) under the supervision of Prof. Yangbo He, and my B.S. in the School of Mathematical Sciences at Capital Normal University (September 2013 - July 2017).
+        <!-- Recent Updates -->
+        <section id="updates">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Recent Updates</h2>
+                    <span class="section-badge">NEW</span>
+                </div>
+                <ul class="updates-list">
+                    <li>
+                        <span class="update-date">2026-01</span>
+                        I am very happy to visit Prof. Qingyuan Zhao at the University of Cambridge in the next half year (January 2026 - June 2026).
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-</p>
+        <!-- Teaching -->
+        <section id="teaching">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Teaching</h2>
+                </div>
+                <ul class="teaching-list">
+                    <li>
+                        <span class="teaching-course">Applied Stochastic Processes</span>
+                        <span class="teaching-time">Fall 2022</span>
+                    </li>
+                    <li>
+                        <span class="teaching-course">Multivariate Statistical Analysis</span>
+                        <span class="teaching-time">Spring (2023, 2024, 2025), Fall (2023, 2024, 2025)</span>
+                    </li>
+                    <li>
+                        <span class="teaching-course">Causal Inference</span>
+                        <span class="teaching-time">Spring (2023, 2025), Fall (2023, 2024, 2025)</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
 
-<!-- 	 Here is my <a href="CausalFall/ShanshanCV.pdf" target="_blank">CV</a>. -->
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Shanshan Luo. Beijing Technology and Business University.</p>
+    </footer>
 
-	 <!-- <a href="https://www.math.pku.edu.cn/teachers/heyb/" target="_blank">Yangbo He</a>.-->
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
 
-<!-- 	 Here is my <a href="CausalFall/ShanshanCV.pdf" target="_blank">CV</a>. -->
+        // Highlight active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
 
-	 <!-- <a href="https://www.math.pku.edu.cn/teachers/heyb/" target="_blank">Yangbo He</a>.-->
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
 
-<!-- 	 Here is my <a href="CausalFall/ShanshanCV.pdf" target="_blank">CV</a>. -->
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
 
-	 <!-- <a href="https://www.math.pku.edu.cn/teachers/heyb/" target="_blank">Yangbo He</a>.-->
-	<!-- <h2>Research Interests</h2>
-<p>
-<ul>
-<li><p> Effect evaluation: covariate adjustment, data fusion, instrumental variable, principal stratification, propensity score, spillover effect </p>
-</li>
- <li><p>  Causal discovery:  Bayesian network </p>
-</li>
- <li><p>  Causal attribution: individual attribution analysis </p>
-</li>
-<li><p> Missing data: nonignorable missing data </p>
-</li>
-</ul>
-</p>
- -->
-<h2>Research Interests</h2>
-<p>My primary research focuses on causal inference, particularly causal mechanisms and the interpretability of causal relationships. Over the past two years, I have concentrated on attribution problems, especially retrospective causal analysis and questions of responsibility fairness.
-	
-	I am interested in exploring the statistical assumptions necessary to establish the identifiability of key causal parameters, as well as methods for partial identification. Additionally, I am also interested in developing more flexible and robust estimation methods. I have worked on the following topics:
-
-</p>
-<ul>
-  <li>Causal effect: covariate adjustment, data fusion, instrumental variable, measurement error, principal stratification, propensity score, spillover effect</li>
-  <li>Causal attribution: individual attribution analysis, continuous outcome attribution </li> 
-  <li>Causal discovery: Bayesian network, causal mechanism of latent confounders, proximal variable selection
-  <li>Missing data: nonignorable missing data</li>
-<li>Applications: environmental protection, oil price forecasting, and cancer causation</li>
-<!-- 	  <p>(In fact, over the past year, I have been diligently learning this topic from Prof   <a href="https://fengxie.site/" target="_blank">Feng Xie</a>.)</li></p> -->
-</ul>
-
-	
- <!--  <p align="justify"><span style="color:#ff0000"><b>I'm looking for students. Welcome to contact me if you are interested! </b></span></p> -->
-
-
-<h2>Publications <small></small></h2>
-
-<!-- <pre><font size="3"><b>* Corresponding author</b></font></pre>-->
-
-<!--<font size="3"><b>Working papers</b></font> 
-<ul>
-    <li>
-        dd
-    </li>
-</ul>-->
-
-
-
-<!-- <font size="3"><b>Accepted papers</b></font>  -->
-	<ol>
-		    <li><p>   <b> Shanshan Luo</b>, Mengchen Shi, Wei Li, Xueli Wang, and Zhi Geng.     <a href="https://doi.org/10.1214/25-EJS2424" target="_blank">Efficiency-improved doubly robust estimation with non-confounding predictive covariates</a>.  <i>Electronic Journal of Statistics</i>, 2025; 19(2): 3723-3742.</p>
-    </li>    
-		
-		    <li><p>  <b> Shanshan Luo</b>  and Zhi Geng.    <a href="https://www3.stat.sinica.edu.tw/ss_newpaper/SS-2025-0152_na.pdf" target="_blank">Discussion on ‘‘Causal and Counterfactual Views of Missing Data Models’’</a>. To appear in  <i>Statistica Sinica</i>, 2025.</p>
-    </li>   
-		  <li><p>  Wei Li, Yuan Liu,   <b> Shanshan Luo</b>, and Zhi Geng.    <a href="https://doi.org/10.1002/sim.70126" target="_blank">Causal inference with outcomes truncated by death and missing not at random</a>. To appear in <i>Statistics in Medicine</i>,  2025.</p>
-    </li>   
-		    <li><p>   <b> Shanshan Luo</b>, Yixuan Yu, Chunchen Liu, Feng Xie, and Zhi Geng.    <a href="https://openreview.net/forum?id=Lie2rOCgkh" target="_blank">Causal attribution analysis for continuous outcomes</a>.   <i>ICML</i>,  Vancouver,  Canada, 2025.  (spotlight, top 2.6%)</p>
-    </li>     
- <li><p> <b> Shanshan Luo</b>, Yechi Zhang,   Wei Li, and Zhi Geng.    <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167947325000519" target="_blank">Multiply robust estimation of causal effects using linked data</a>. To appear in <i>Computational Statistics & Data Analysis</i>, 2025.</p>
-    </li>
-		    <li><p> Peng Wu, <b> Shanshan Luo</b>, and Zhi Geng.    <a href="https://doi.org/10.1080/01621459.2024.2435656" target="_blank">On the comparative analysis of average treatment effects estimation via data combination</a>. To appear in <i>Journal of the American Statistical Association</i>, 2024.</p>
-    </li> 
-		
-		    <li><p><b> Shanshan Luo</b>, Jiaqi Min, Wei Li, Xueli Wang, and Zhi Geng.    <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167947324001634" target="_blank">A comparative analysis of different adjustment sets using propensity score based estimators</a>.   <i>Computational Statistics & Data Analysis</i>,  2025; 203: 108079.</p>
-    </li>
-
-		
-
-
-    <li><p>Shaojie Wei, Chao Zhang, Zhi Geng, and <b>Shanshan Luo</b>.    <a href="https://doi.org/10.3390/math12182801" target="_blank">Identifiability and estimation for potential-outcome means with misclassified outcomes</a>.  <i>Mathematics</i>,  2024; 12(18):2801.</p>
-    </li>
-
-		    <li><p><b> Shanshan Luo</b>, Wei Li, Wang Miao, and Yangbo He.    <a href="http://doi.org/10.1002/sim.10175" target="_blank">Identification and estimation of causal effects in the presence of confounded principal strata</a>.    <i>Statistics in Medicine</i>,   2024; 43(22): 4372-4387.</p>
-    </li>
-     
-    <li><p>Kang Shuai, <b> Shanshan Luo</b>, Wei Li, and Yangbo He.    <a href="http://www3.stat.sinica.edu.tw/ss_newpaper/SS-2024-0006_na.pdf" target="_blank">Identifying causal effects using instrumental variables from the auxiliary population</a>. To appear in  <i>Statistica Sinica</i>, 2024.</p>
-    </li>
-     
-    <li><p>Kang Shuai, <b> Shanshan Luo</b>, Yue Zhang, Feng Xie, and Yangbo He.    <a href="http://www3.stat.sinica.edu.tw/ss_newpaper/SS-2023-0315_na.pdf" target="_blank">Identification and estimation of causal effects using non-Gaussianity and auxiliary covariates</a>. To appear in  <i>Statistica Sinica</i>, 2024.</p>
-    </li>
-     
-    <li><p>Feng Xie, Zhengming Chen, <b> Shanshan Luo</b>, Wang Miao, Ruichu Cai, and Zhi Geng.    <a href="https://dl.acm.org/doi/10.5555/3692070.3694308" target="_blank">Automating the selection of proxy variables of unmeasured confounders</a>.   <i>ICML</i>,  Vienna, Austria, 2024.  (spotlight, top 3.5%)</p>
-    </li>
-     
-    <li><p> Honglei Zhang,  Shuyi Wang,  Haoxuan Li,   Chunyuan Zheng,  Xu Chen,  Li Liu, <b> Shanshan Luo</b>, and  Peng Wu.  <a href="https://ieeexplore.ieee.org/abstract/document/10597923/authors#authors" target="_blank">  Uncovering the limitations of eliminating selection bias for recommendation: missing mechanisms, disentanglement, and identifiability</a>.  <i>ICDE</i>, Utrecht, Netherlands, 2024.</p>
-    </li>
-     
-    <li><p>Wei Li, <b> Shanshan Luo</b>, and Wangli Xu.    <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167947323001822" target="_blank">Calibrated regression estimation using empirical likelihood under data fusion</a>.   <i>Computational Statistics & Data Analysis</i>, 2024; 190: 107871.</p>
-    </li>
-     
-   	<li><p>  Wei Li, <b>Shanshan Luo</b>, Yangbo He, and Zhi Geng. <a href="https://doi.org/10.1002/sim.9883" target="_blank">Subgroup analysis using Bernoulli-gated hierarchical mixtures of experts models</a>.  <i>Statistics in Medicine</i>, 2023; 42(26): 4681–4695.</p>
-   	</li> 
- 
-   	<li><p><b> Shanshan Luo</b>, Wei Li, and Yangbo He. <a href="https://doi.org/10.1111/biom.13554" target="_blank">Causal inference with outcomes truncated by death in multiarm studies</a>. <i>Biometrics</i>, 2023; 79(1): 502-513.</p>
-   	</li> 
-</ol>
-	
- 
-<h2>Preprints <small></small></h2>
-<ol>
-    <li><p><b>Shanshan Luo</b>, Wei Li, Xueli Wang, Shaojie Wei, and Zhi Geng. <a href="http://arxiv.org/abs/2601.12478" target="_blank">Assessing interactive causes of an occurred outcome due to two binary exposures</a>. <i>arXiv</i>, 2026.</p>
-    </li>
-    <li><p><b>Shanshan Luo</b>, Kang Shuai, Yechi Zhang, Wei Li, and Yangbo He. <a href="http://arxiv.org/abs/2504.05658" target="_blank">Identification and estimation of causal peer effects using instrumental variables</a>. <i>arXiv</i>, 2025. (poster award winners, ICSA 2025 China Conference)</p>
-    </li>
-    <li><p>Yue Zhang, <b>Shanshan Luo</b>, Zhi Geng, and Yangbo He. <a href="https://arxiv.org/abs/2510.12321" target="_blank">Optimal treatment rules under missing predictive covariates: a covariate-balancing doubly robust approach</a>. <i>arXiv</i>, 2025.</p>
-    </li>
-    <li><p>Naiwen Ying, <b>Shanshan Luo</b>, and Wang Miao. <a href="https://arxiv.org/abs/2504.14173" target="_blank">A generalized tetrad constraint for testing conditional independence given a latent variable</a>. <i>arXiv</i>, 2025.</p>
-    </li>
-    <li><p>Peng Wu, Qing Jiang, and <b>Shanshan Luo</b>. <a href="https://arxiv.org/abs/2505.05308" target="_blank">Safe individualized treatment rules with controllable harm rates</a>. <i>arXiv</i>, 2025.</p>
-    </li>
-    <li><p><b>Shanshan Luo</b>, Peng Wu, and Zhi Geng. <a href="http://arxiv.org/abs/2511.20318" target="_blank">Policy learning with pseudo-type classification</a>. <i>arXiv</i>, 2025.</p>
-    </li>
-    <li><p>Jiaqi Min, Xueyue Zhang, and <b>Shanshan Luo</b>. <a href="https://arxiv.org/abs/2507.13965" target="_blank">A regression-based approach for bidirectional causal inference in the presence of unmeasured confounding</a>. <i>arXiv</i>, 2025.</p>
-    </li>
-    <li><p><b>Shanshan Luo</b>, Yingying Wang, and Yue Zhang. Improved inverse probability weighting estimation and its application to predictive covariates, 2025. Submitted.</p>
-    </li>
-    <li><p>Yafang Deng, Kang Shuai, and <b>Shanshan Luo</b>. Binary bidirectional causal model with instrumental variables, 2025. Submitted.</p>
-    </li>
-</ol>
-</ol>
- 
-<h2>Recent Updates</h2>
-<ul>
-<li>2026-01: I am very happy to visit Prof. Qingyuan Zhao at the University of Cambridge in the next half year (January 2026 - June 2026). </li>
-</ul>
-<!-- <p>&nbsp;&nbsp;* Corresponding author,&nbsp;&nbsp;&nbsp;# Co-first author </p>  -->
-<!-- <p>I am glad to collaborate with all my colleagues on studies I am interested in 😊.
-</p> -->
-<h2>Teaching <small></small></h2>
-<ul>
-  <li>Applied Stochastic Processes: Fall 2022.</li>
-  <li>Multivariate Statistical Analysis: Spring (2023,2024,2025), Fall (2023, 2024,  2025).</li>
-  <li>
-<!--         Causal Inference: Spring 2023, Fall 2023, Fall 2024. (my recent  <a href="CausalFall/Survey.pdf" target="_blank">survey</a>) -->
-        Causal Inference: Spring (2023,2025), Fall (2023, 2024, 2025). 
-<!--     <ul> -->
-<!--       <li><a href="CausalFall/chapter1.pdf" target="_blank">Chapter 1：从辛普森悖论谈起</a></li> -->
-<!--       <li><a href="CausalFall/chapter2.pdf" target="_blank">Chapter 2：随机化试验--因果推断的金标准</a></li> -->
-<!--       <li><a href="CausalFall/chapter3_full.pdf" target="_blank">Chapter 3：不可避免的观察性研究</a></li>     -->
-<!--       <li><a href="CausalFall/chapter4_IV_NC.pdf" target="_blank">Chapter 4：充满挑战的未知混杂</a></li> -->
-<!--       <li><a href="CausalFall/chapter5_paneldata.pdf" target="_blank">Chapter 5：面板数据</a></li> -->
-<!--       <li><a href="CausalFall/post_treatment.pdf" target="_blank">Chapter 5：关于后处理变量的讨论</a></li> -->
-<!--       <li><a href="CausalFall/home3.pdf" target="_blank">期末作业</a></li> -->
-<!--     </ul> -->
-  </li> 
-</ul>
-
- 
-<!-- <h2>Recent News</h2>
-
-<!-- 三张照片 -->
-<!-- <!-- <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 20px 0;">
-  <img src="photos/Graduation photo1.jpg" alt="Graduation 1" style="max-width: 240px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">  
-  <img src="photos/Graduation photo3.jpg" alt="Graduation 1" style="max-width: 240px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-  <img src="photos/Graduation photo2.jpg" alt="Graduation 1" style="max-width: 240px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-</div>
-
-
-<ul style="list-style: none; padding-left: 1em;">
-  <li>🎓 Congratulations to all graduates! Wishing you all the best in your future endeavors.</li>
-  <li>📢 Interested in causal inference? You're warmly welcome to join our research group.</li>
-  <li>📧 Feel free to <a href="mailto:shanshanluo@btbu.edu.cn">contact me anytime</a>.</li>
-</ul> --> 
-
-
-<!-- <!-- 	 -->
-<!-- <style>
-  .highlight-box {
-    border: 3px dashed #c4a7e7;
-    border-radius: 20px;
-    padding: 30px;
-    background-color: #fdf9ff;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    margin: 40px auto;
-    max-width: 900px;
-    text-align: center;
-  }
-
-  .highlight-box img {
-    max-width: 240px;
-    border-radius: 12px;
-    margin: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  }
-
-  .highlight-box li {
-    list-style: none;
-    font-size: 18px;
-    margin: 12px 0;
-  }
-
-  .highlight-box li::before {
-    content: "🌸";
-    margin-right: 8px;
-  }
-
-  .highlight-box a {
-    color: #3466c2;
-    text-decoration: none;
-  }
-
-  .highlight-box a:hover {
-    text-decoration: underline;
-  }
-</style>
-
-<div class="highlight-box">
-  <div>
-    <img src="photos/Graduation photo1.jpg" alt="Graduation 1">
-    <img src="photos/Graduation photo3.jpg" alt="Graduation 3">
-    <img src="photos/Graduation photo2.jpg" alt="Graduation 2">
-  </div>
-  <ul>
-    <li>  Congratulations to all graduates! Wishing you all the best in your future endeavors. 🎓 </li>
-<!--     <li> 📢 Interested in causal inference? You're warmly welcome to join our research group.  </li>
-    <li> 📧 Feel free to <a href="mailto:shanshanluo@btbu.edu.cn">contact me anytime</a>.  </li> -->
-<!--   </ul>  -->  
- 
-<!--  --> 
-
-<div id="footer">
-    <div id="footer-text"></div>
-</div>
-
-</div>
-
-</body></html>
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
