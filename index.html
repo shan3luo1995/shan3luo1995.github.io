@@ -501,7 +501,7 @@
                         Beijing, China. 102488.</p>
                         <p style="margin-top: 12px;">
                             <strong>Office:</strong> Room 209, Shutong Building, Higher Education Garden, Liangxiang<br>
-                            <strong>Email:</strong>  shanshanluo@btbu.edu.cn
+                            <strong>Email:</strong>  <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3c0dbd2ddc0dbd2dddfc6dcf3d1c7d1c69dd6d7c69dd0dd">[email&#160;protected]</a>
                         </p>
                     </div>
                 </div>
@@ -658,32 +658,40 @@
         <p>© 2026 Shanshan Luo. Beijing Technology and Business University.</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile menu toggle
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
 
-        // Highlight active nav link on scroll
+        // Highlight active nav link
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-links a');
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
+        // Click: immediately set active and close mobile menu
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('navLinks').classList.remove('active');
             });
         });
-    </script>
-</body>
-</html>
+
+        // Scroll: also handle near-bottom case for last section
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const scrollBottom = scrollY + window.innerHeight;
+            const docHeight = document.documentElement.scrollHeight;
+
+            if (scrollBottom >= docHeight - 10) {
+                current = sections[sections.length - 1].getAttribute('id');
+            } else {
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 120;
+                    if (scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+            }
+
+            navLinks.forEach(link => {
