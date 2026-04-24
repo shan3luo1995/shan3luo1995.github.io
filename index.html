@@ -8,7 +8,7 @@
     <title>Shanshan Luo's Homepage</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #3d6a99;
@@ -395,11 +395,55 @@
 
         /* Footer */
         footer {
-            background: var(--primary);
-            color: rgba(255,255,255,0.8);
-            padding: 32px 24px;
+            background: var(--bg);
+            padding: 56px 24px 48px;
             text-align: center;
-            font-size: 0.92rem;
+        }
+
+        .footer-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-ornament::before,
+        .footer-ornament::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary) 40%, var(--primary) 60%, transparent);
+            opacity: 0.35;
+        }
+
+        .footer-ornament span {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--text-light);
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+        }
+
+        .footer-diamond {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 8px;
+        }
+
+        .footer-diamond span {
+            width: 5px;
+            height: 5px;
+            background: var(--primary);
+            opacity: 0.3;
+            transform: rotate(45deg);
+        }
+
+        .footer-diamond span:nth-child(2) {
+            opacity: 0.5;
         }
 
         /* Responsive */
@@ -463,6 +507,20 @@
 
             .update-date {
                 top: 0;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                padding: 0 16px;
+                gap: 32px;
+            }
+
+            .footer-right {
+                gap: 32px;
+            }
+
+            .footer-divider {
+                padding: 20px 16px 0;
             }
         }
     </style>
@@ -656,10 +714,15 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Shanshan Luo. Beijing Technology and Business University.</p>
+        <div class="footer-ornament">
+            <span>Less is more.</span>
+        </div>
+        <div class="footer-diamond">
+            <span></span><span></span><span></span>
+        </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Mobile menu toggle
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
@@ -669,7 +732,6 @@
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-links a');
 
-        // Click: immediately set active and close mobile menu
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
                 navLinks.forEach(l => l.classList.remove('active'));
@@ -678,7 +740,6 @@
             });
         });
 
-        // Scroll: also handle near-bottom case for last section
         window.addEventListener('scroll', () => {
             let current = '';
             const scrollBottom = scrollY + window.innerHeight;
@@ -696,3 +757,12 @@
             }
 
             navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
