@@ -619,37 +619,46 @@
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-links a');
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                document.getElementById('navLinks').classList.remove('active');
-            });
-        });
+        let clickLock = false;
+let clickLockTimer = null;
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const scrollBottom = scrollY + window.innerHeight;
-            const docHeight = document.documentElement.scrollHeight;
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById('navLinks').classList.remove('active');
 
-            if (scrollBottom >= docHeight - 10) {
-                current = sections[sections.length - 1].getAttribute('id');
-            } else {
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 120;
-                    if (scrollY >= sectionTop) {
-                        current = section.getAttribute('id');
-                    }
-                });
-            }
+        // 锁住高亮，避免 scroll 监听在动画过程中抢占
+        clickLock = true;
+        clearTimeout(clickLockTimer);
+        clickLockTimer = setTimeout(() => { clickLock = false; }, 800);
+    });
+});
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
+window.addEventListener('scroll', () => {
+    if (clickLock) return;
+
+    let current = '';
+    const sectionTop120 = scrollY + 130; // 与 scroll-padding-top 对齐
+
+    sections.forEach(section => {
+        if (sectionTop120 >= section.offsetTop) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    // 仅在真正滚到页面最底部时才强制选中最后一个 section
+    if (Math.ceil(scrollY + window.innerHeight) >= document.documentElement.scrollHeight - 2) {
+        current = sections[sections.length - 1].getAttribute('id');
+    }
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
+    });
+});
     </script>
 </body>
 </html>
