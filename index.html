@@ -463,7 +463,7 @@
     <nav>
         <div class="nav-container">
             <a href="#" class="nav-brand">Shanshan Luo</a>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <button type="button" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false" onclick="toggleMenu()">☰</button>
             <div class="nav-links" id="navLinks">
                 <a href="#biography">Biography</a>
                 <a href="#research">Research</a>
@@ -619,9 +619,37 @@ outcomes with nonignorable nonresponse</a>. <i>arXiv</i>, 2026.</p></li>
     </footer>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
+        const menuButton = document.querySelector('.mobile-menu-btn');
+        const menu = document.getElementById('navLinks');
+
+        function setMenuOpen(open) {
+            menu.classList.toggle('active', open);
+            menuButton.setAttribute('aria-expanded', String(open));
         }
+
+        function toggleMenu() {
+            setMenuOpen(!menu.classList.contains('active'));
+        }
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && menu.classList.contains('active')) {
+                setMenuOpen(false);
+                if (getComputedStyle(menuButton).display !== 'none') {
+                    menuButton.focus();
+                }
+            }
+        });
+
+        // Reset the mobile disclosure when switching to the desktop layout.
+        window.matchMedia('(max-width: 768px)').addEventListener('change', event => {
+            if (!event.matches) {
+                const buttonHadFocus = document.activeElement === menuButton;
+                setMenuOpen(false);
+                if (buttonHadFocus) menu.querySelector('a').focus();
+            } else if (!menu.classList.contains('active') && menu.contains(document.activeElement)) {
+                menuButton.focus();
+            }
+        });
 
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-links a');
@@ -633,7 +661,12 @@ navLinks.forEach(link => {
     link.addEventListener('click', function() {
         navLinks.forEach(l => l.classList.remove('active'));
         this.classList.add('active');
-        document.getElementById('navLinks').classList.remove('active');
+        if (menu.classList.contains('active')) {
+            setMenuOpen(false);
+            if (getComputedStyle(menuButton).display !== 'none') {
+                menuButton.focus();
+            }
+        }
 
         // 锁住高亮，避免 scroll 监听在动画过程中抢占
         clickLock = true;
